@@ -19,7 +19,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content=" https://TasminDesserts.github.io/TasminDesserts/"
+      content="https://TasminDesserts.github.io/TasminDesserts/"
     />
     <meta property="og:title" content="Tasmin Desserts - Sweet Creations" />
     <meta
@@ -73,6 +73,14 @@
     />
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress-container">
+      <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+
     <!-- Loading Animation -->
     <div class="loader-wrapper" id="loader">
       <div class="loader">
@@ -104,6 +112,11 @@
             <li><a href="#specialties">Specialties</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li>
+              <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
@@ -334,9 +347,17 @@
           </p>
         </div>
 
-        <div class="gallery-container">
+        
+        <div class="gallery-filters" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="cakes">Cakes</button>
+          <button class="filter-btn" data-filter="pastries">Pastries & Donuts</button>
+          <button class="filter-btn" data-filter="custom">Custom Orders</button>
+          <button class="filter-btn" data-filter="others">Others</button>
+        </div>
+        <div class="gallery-container" id="mainGallery">
           <!-- Gallery Items -->
-          <div class="gallery-item" data-src="Pictures/ChocolateCake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/ChocolateCake.jpg">
             <img
               src="Pictures/ChocolateCake.jpg"
               alt="Chocolate Cake"
@@ -345,10 +366,12 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Chocolate Cake</span>
+              <button class="add-to-order-btn" data-name="Chocolate Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
           <div
             class="gallery-item"
+            data-category="cakes"
             data-src="Pictures/ChocolateOverloadCake.jpg"
           >
             <img
@@ -359,9 +382,10 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Chocolate Overload Cake</span>
+              <button class="add-to-order-btn" data-name="Chocolate Overload Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/ChocolatePasty.jpg">
+          <div class="gallery-item" data-category="pastries" data-src="Pictures/ChocolatePasty.jpg">
             <img
               src="Pictures/ChocolatePasty.jpg"
               alt="Chocolate Pastry"
@@ -370,23 +394,26 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Chocolate Pastry</span>
+              <button class="add-to-order-btn" data-name="Chocolate Pastry"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/DreamCake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/DreamCake.jpg">
             <img src="Pictures/DreamCake.jpg" alt="Dream Cake" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Dream Cake</span>
+              <button class="add-to-order-btn" data-name="Dream Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/JarCake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/JarCake.jpg">
             <img src="Pictures/JarCake.jpg" alt="Jar Cake" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Jar Cake</span>
+              <button class="add-to-order-btn" data-name="Jar Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/RoshmalaiCake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/RoshmalaiCake.jpg">
             <img
               src="Pictures/RoshmalaiCake.jpg"
               alt="Roshmalai Cake"
@@ -395,16 +422,18 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Roshmalai Cake</span>
+              <button class="add-to-order-btn" data-name="Roshmalai Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/TubCake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/TubCake.jpg">
             <img src="Pictures/TubCake.jpg" alt="Tub Cake" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Tub Cake</span>
+              <button class="add-to-order-btn" data-name="Tub Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/VanillaCake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/VanillaCake.jpg">
             <img
               src="Pictures/VanillaCake.jpg"
               alt="Vanilla Cake"
@@ -413,9 +442,10 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Vanilla Cake</span>
+              <button class="add-to-order-btn" data-name="Vanilla Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/swissrollcake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/swissrollcake.jpg">
             <img
               src="Pictures/swissrollcake.jpg"
               alt="Swiss Roll Cake"
@@ -424,16 +454,18 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Swiss Roll Cake</span>
+              <button class="add-to-order-btn" data-name="Swiss Roll Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/donuts.jpg">
+          <div class="gallery-item" data-category="pastries" data-src="Pictures/donuts.jpg">
             <img src="Pictures/donuts.jpg" alt="Donuts" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Assorted Donuts</span>
+              <button class="add-to-order-btn" data-name="Assorted Donuts"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/chocolates.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/chocolates.jpg">
             <img
               src="Pictures/chocolates.jpg"
               alt="Chocolates"
@@ -442,23 +474,26 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Chocolate Drip Cake</span>
+              <button class="add-to-order-btn" data-name="Chocolate Drip Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/cupcakes.jpg">
+          <div class="gallery-item" data-category="pastries" data-src="Pictures/cupcakes.jpg">
             <img src="Pictures/cupcakes.jpg" alt="Cupcakes" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Cup Cakes</span>
+              <button class="add-to-order-btn" data-name="Cup Cakes"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/custerd.jpg">
+          <div class="gallery-item" data-category="others" data-src="Pictures/custerd.jpg">
             <img src="Pictures/custerd.jpg" alt="Custard" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Fruit Custard</span>
+              <button class="add-to-order-btn" data-name="Fruit Custard"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/VanillaPastry.jpg">
+          <div class="gallery-item" data-category="pastries" data-src="Pictures/VanillaPastry.jpg">
             <img
               src="Pictures/VanillaPastry.jpg"
               alt="Vanilla Pastry"
@@ -467,122 +502,128 @@
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Vanilla Pastry</span>
+              <button class="add-to-order-btn" data-name="Vanilla Pastry"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/poundcake.jpg">
+          <div class="gallery-item" data-category="cakes" data-src="Pictures/poundcake.jpg">
             <img src="Pictures/poundcake.jpg" alt="Pound Cake" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Pound Cake</span>
+              <button class="add-to-order-btn" data-name="Pound Cake"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/pudding.jpg">
+          <div class="gallery-item" data-category="others" data-src="Pictures/pudding.jpg">
             <img src="Pictures/pudding.jpg" alt="Pudding" loading="lazy" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span class="gallery-name">Caramel Pudding</span>
+              <button class="add-to-order-btn" data-name="Caramel Pudding"><i class="fas fa-cart-plus"></i> Add to Order</button>
             </div>
           </div>
         </div>
 
         <!-- Custom Orders Segment -->
-        <div class="section-title" data-aos="fade-up" style="margin-top: 80px">
-          <h2>Custom Orders</h2>
-          <p>
-            Bespoke creations designed to your exact specifications. From themed
-            cakes to personalized treats, we bring your vision to life with
-            elegance and flavor.
-          </p>
-        </div>
+        <div id="customOrdersSection">
+          <div class="section-title" data-aos="fade-up" style="margin-top: 80px">
+            <h2>Custom Orders</h2>
+            <p>
+              Bespoke creations designed to your exact specifications. From themed
+              cakes to personalized treats, we bring your vision to life with
+              elegance and flavor.
+            </p>
+          </div>
 
-        <div class="gallery-container">
-          <div class="gallery-item" data-src="Pictures/Custom1.jpg">
-            <img
-              src="Pictures/Custom1.jpg"
-              alt="Custom Order 1"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
+          <div class="gallery-container" id="customGallery">
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom1.jpg">
+              <img src="Pictures/Custom1.jpg" alt="Custom Order 1" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
+            </div>
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom2.jpg">
+              <img src="Pictures/Custom2.jpg" alt="Custom Order 2" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
+            </div>
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom3.jpg">
+              <img src="Pictures/Custom3.jpg" alt="Custom Order 3" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
+            </div>
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom4.jpg">
+              <img src="Pictures/Custom4.jpg" alt="Custom Order 4" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
+            </div>
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom5.jpg">
+              <img src="Pictures/Custom5.jpg" alt="Custom Order 5" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
+            </div>
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom6.jpg">
+              <img src="Pictures/Custom6.jpg" alt="Custom Order 6" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
+            </div>
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom7.jpg">
+              <img src="Pictures/Custom7.jpg" alt="Custom Order 7" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
+            </div>
+            <div class="gallery-item" data-category="custom" data-src="Pictures/Custom8.jpg">
+              <img src="Pictures/Custom8.jpg" alt="Custom Order 8" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+                <span class="gallery-name">Custom Creation</span>
+                <button class="add-to-order-btn" data-name="Custom Creation"><i class="fas fa-cart-plus"></i> Add to Order</button>
+              </div>
             </div>
           </div>
-          <div class="gallery-item" data-src="Pictures/Custom2.jpg">
-            <img
-              src="Pictures/Custom2.jpg"
-              alt="Custom Order 2"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
-            </div>
-          </div>
-          <div class="gallery-item" data-src="Pictures/Custom3.jpg">
-            <img
-              src="Pictures/Custom3.jpg"
-              alt="Custom Order 3"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
-            </div>
-          </div>
-          <div class="gallery-item" data-src="Pictures/Custom4.jpg">
-            <img
-              src="Pictures/Custom4.jpg"
-              alt="Custom Order 4"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
-            </div>
-          </div>
-          <div class="gallery-item" data-src="Pictures/Custom5.jpg">
-            <img
-              src="Pictures/Custom5.jpg"
-              alt="Custom Order 5"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
-            </div>
-          </div>
-          <div class="gallery-item" data-src="Pictures/Custom6.jpg">
-            <img
-              src="Pictures/Custom6.jpg"
-              alt="Custom Order 6"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
-            </div>
-          </div>
-          <div class="gallery-item" data-src="Pictures/Custom7.jpg">
-            <img
-              src="Pictures/Custom7.jpg"
-              alt="Custom Order 7"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
-            </div>
-          </div>
-          <div class="gallery-item" data-src="Pictures/Custom8.jpg">
-            <img
-              src="Pictures/Custom8.jpg"
-              alt="Custom Order 8"
-              loading="lazy"
-            />
-            <div class="gallery-overlay">
-              <i class="fas fa-search-plus"></i>
-              <span class="gallery-name">Custom Creation</span>
-            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facebook Feed Section -->
+    <section class="facebook-feed section-padding" id="recent-posts">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Recent Updates</h2>
+          <p>Stay up to date with our latest creations and announcements directly from our Facebook page.</p>
+        </div>
+        <div class="fb-feed-container" data-aos="fade-up">
+          <div class="fb-page" 
+            data-href="https://www.facebook.com/61578595806917" 
+            data-tabs="timeline" 
+            data-width="1200" 
+            data-height="700" 
+            data-small-header="false" 
+            data-adapt-container-width="true" 
+            data-hide-cover="false" 
+            data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/61578595806917" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/61578595806917">Tasmin Desserts</a>
+            </blockquote>
           </div>
         </div>
       </div>
@@ -743,7 +784,7 @@
 
         <div class="copyright">
           <p>
-            &copy; 2023 Tasmin Desserts. All rights reserved. | Designed with
+            &copy; <span id="copyrightYear">2025</span> Tasmin Desserts. All rights reserved. | Designed with
             <i class="fas fa-heart" style="color: var(--primary-color)"></i> for
             dessert lovers <br />Designed & developed by Tofayel Ahmmed.
             <a
@@ -772,6 +813,13 @@
         <img id="modalImage" src="" alt="" />
       </div>
     </div>
+
+    
+    <!-- Floating Cart for Order Builder -->
+    <button id="floatingCart" class="floating-cart" aria-label="View Order">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
 
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
